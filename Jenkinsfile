@@ -10,7 +10,7 @@ pipeline{
         spec:
           containers:
           - name: bc15-java
-            image: maven:3.8.1-adoptopenjdk-11
+            image: maven:3.8.1-jdk-8
             command:
             - cat
             tty: true
@@ -40,7 +40,7 @@ pipeline{
 	stages{
 	    stage('Checkout Source') {
       steps {
-        git 'https://github.com/PDhanrajnath/be'
+        git 'https://github.com/PDhanrajnath/be.git'
       }
     }
 	    stage('Build Jar'){
@@ -48,7 +48,7 @@ pipeline{
 	        steps{
 	           container('bc15-java'){
    
-	            sh 'mvn package '
+	            sh 'mvn -B -ntp clean install'
 
 	           }
 	            
