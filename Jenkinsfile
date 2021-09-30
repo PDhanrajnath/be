@@ -48,7 +48,7 @@ pipeline{
 	        steps{
 	           container('bc15-java'){
    
-	            sh 'mvn -B -ntp clean install'
+	            sh 'mvn install'
 
 	           }
 	            
