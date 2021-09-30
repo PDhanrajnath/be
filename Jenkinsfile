@@ -10,7 +10,7 @@ pipeline{
         spec:
           containers:
           - name: bc15-java
-            image: maven:3.8.1-jdk-8
+            image: maven:3.8.1-adoptopenjdk-11
             command:
             - cat
             tty: true
@@ -48,7 +48,7 @@ pipeline{
 	        steps{
 	           container('bc15-java'){
    
-	            sh 'mvn -B -ntp clean install'
+	            sh 'mvn -B -DskipTests clean package'
 
 	           }
 	            
