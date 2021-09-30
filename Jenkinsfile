@@ -10,7 +10,7 @@ pipeline{
         spec:
           containers:
           - name: bc15-java
-            image: adoptopenjdk/openjdk11:alpine-jre
+            image: maven:3.8.1-adoptopenjdk-11
             command:
             - cat
             tty: true
@@ -48,7 +48,7 @@ pipeline{
 	        steps{
 	           container('bc15-java'){
    
-	            sh 'mvn package -f job-management-service/pom.xml'
+	            sh 'mvn package -f job-management-service/'
 
 	           }
 	            
