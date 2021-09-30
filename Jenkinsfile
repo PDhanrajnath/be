@@ -48,7 +48,7 @@ pipeline{
 	        steps{
 	           container('bc15-java'){
    
-	            sh 'mvn package -f job-management-service/'
+	            sh 'mvn package '
 
 	           }
 	            
@@ -57,7 +57,7 @@ pipeline{
             steps{
             container('bc15-docker'){
 
-            sh 'docker build -t dhanrajnath/be_jenkins:latest job-management-service/'
+            sh 'docker build -t dhanrajnath/be_jenkins:latest '
             sh 'docker images'
             
         }}  
