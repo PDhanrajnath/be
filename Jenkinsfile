@@ -21,10 +21,10 @@ podTemplate(label: 'bc15-be', containers: [
 	  
 	  stage('Build Jar'){
 	     
-	           container('bc15-java'){
-			   stage ('build jar'){
+	           container('bc15be-docker'){
+			   
 	            		sh 'mvn -B -DskipTests clean package'
-			   }
+			   
 	           }
 	            
 	    }
