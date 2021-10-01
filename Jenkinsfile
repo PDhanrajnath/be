@@ -21,7 +21,7 @@ podTemplate(label: 'bc15-be', containers: [
 //     }
 	  
 	  stage('Build Jar'){
-	     
+	     git 'https://github.com/PDhanrajnath/be.git'
 	           container('bc15-java'){
 			   
 	            		sh 'mvn -B -DskipTests clean package'
@@ -35,7 +35,7 @@ podTemplate(label: 'bc15-be', containers: [
     
     stage('Build Docker'){
 			
-				git 'https://github.com/PDhanrajnath/be.git'
+				
 				container('bc15be-docker'){
 					
 				    stage('Build docker image') {
