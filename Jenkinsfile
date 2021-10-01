@@ -37,12 +37,10 @@ podTemplate(label: 'bc15-be', containers: [
 			
 				
 				container('bc15be-docker'){
-					
-				    stage('Build docker image') {
                 
 					sh 'docker build -t dhanrajnath/be_jenkins .'
 					sh 'docker images'
-					}
+					
 				}
 			
 		}
@@ -50,7 +48,6 @@ podTemplate(label: 'bc15-be', containers: [
 		stage('Push Docker'){
 			
 				container('bc15be-docker'){
-					stage('Push docker image'){
 					sh 'ls'
     withCredentials([usernamePassword(credentialsId: 'Dhanrajnath_Docker', usernameVariable: 'username', passwordVariable: 'password')]) {
 						sh 'echo $PASSWORD'
@@ -58,7 +55,7 @@ podTemplate(label: 'bc15-be', containers: [
 						echo USERNAME
 						echo "username is $USERNAME"
 						sh 'docker push dhanrajnath/be_jenkins'
-    }           
+               
 				}
 			}
 		}
