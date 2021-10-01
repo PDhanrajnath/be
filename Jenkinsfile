@@ -18,6 +18,19 @@ podTemplate(label: 'bc15-be', containers: [
 //         git 'https://github.com/PDhanrajnath/fe.git'
 //       }
 //     }
+	  
+	  stage('Build Jar'){
+	     
+	           container('bc15-java'){
+   
+	            sh 'mvn -B -DskipTests clean package'
+
+	           }
+	            
+	    }
+	  
+	  
+
     
     stage('Build Docker'){
 			
@@ -48,6 +61,7 @@ podTemplate(label: 'bc15-be', containers: [
 				}
 			}
 		}
+
 
 	
 // 	post{
