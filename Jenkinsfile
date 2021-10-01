@@ -1,7 +1,8 @@
 import groovy.transform.Field
 
 podTemplate(label: 'bc15-be', containers: [
-	containerTemplate(name: 'bc15be-docker', image: 'docker:19.03', command: 'cat', ttyEnabled: true)],
+	containerTemplate(name: 'bc15be-docker', image: 'docker:19.03', command: 'cat', ttyEnabled: true),
+	containerTemplate(name: 'bc15-java', image: 'maven:3.8.1-adoptopenjdk-11', command: 'cat', ttyEnabled: true) ],
 	volumes: [hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]
 ) {
 
@@ -21,7 +22,7 @@ podTemplate(label: 'bc15-be', containers: [
 	  
 	  stage('Build Jar'){
 	     
-	           container('bc15be-docker'){
+	           container('bc15-java'){
 			   
 	            		sh 'mvn -B -DskipTests clean package'
 			   
