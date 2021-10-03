@@ -13,10 +13,7 @@ podTemplate(label: 'bc15-be', containers: [
 		// MY_KUBECONFIG = credentials('config-file')
 	}
 	
-<<<<<<< HEAD
-	agent{
-	kubernetes {
-=======
+
 
 // 		stage('Checkout Source') {
 // 			steps {
@@ -89,8 +86,7 @@ podTemplate(label: 'bc15-be', containers: [
 // 	agent{
 			
 // 			kubernetes {
->>>>>>> 45f44389a65a545fce84c1ab011fab9bf886a41b
-			    
+		    
 // 			    yaml '''
 //         apiVersion: v1
 //         kind: Pod
