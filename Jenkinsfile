@@ -39,7 +39,8 @@ podTemplate(label: 'bc15-be', containers: [
 				
 				container('bc15be-docker'){
                 
-					sh 'docker build -t dhanrajnath/be_jenkins .'
+					sh 'docker build -t dhanrajnath/be_jenkins:latest .'
+					sh "docker tag dhanrajnath/be_jenkins:latest dhanrajnath/be_jenkins:${BUILD_NUMBER}"
 					sh 'docker images'
 					
 				}
@@ -55,7 +56,8 @@ podTemplate(label: 'bc15-be', containers: [
                          sh 'docker login -u $username -p $password'
 						echo USERNAME
 						echo "username is $USERNAME"
-						sh 'docker push dhanrajnath/be_jenkins'
+						sh 'docker push dhanrajnath/be_jenkins:latest'
+						sh "docker push dhanrajnath/be_jenkins:${BUILD_NUMBER}"
                
 				}
 			}
@@ -63,7 +65,7 @@ podTemplate(label: 'bc15-be', containers: [
 
 		   stage ('BC15-GC') {
         	
-		    build job: 'BC15-GC', parameters: [string(name: 'master', value: env.BRANCH_NAME)]
+		    build job: 'BC15-GC', parameters: [string(name: 'be_tag', value: BUILD_NUMBER)]
 	
         }
     
