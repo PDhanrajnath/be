@@ -61,7 +61,12 @@ podTemplate(label: 'bc15-be', containers: [
 			}
 		}
 
-
+		   stage ('BC15-GC') {
+        	
+		    build job: 'BC15-GC', parameters: [string(name: 'master', value: env.BRANCH_NAME)]
+	
+        }
+    
 	
 // 	post{
 // 	    always{
